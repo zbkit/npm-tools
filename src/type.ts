@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type ClassConstructor<T = any> = new (..._args: any[]) => T;
 
 export interface ReadWriteFunction<T> {

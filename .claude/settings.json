@@ -3,7 +3,8 @@
     "allow": [
       "Bash(npm whoami *)",
       "Bash(echo \"---exit:$?---\")",
-      "Bash(echo \"npm/tools count in index.html: $?\")"
+      "Bash(echo \"npm/tools count in index.html: $?\")",
+      "Bash(pnpm lint *)"
     ]
   }
 }

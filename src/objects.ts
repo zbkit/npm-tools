@@ -12,16 +12,19 @@ export const deepCopy = <T>(obj: T): T => {
   }
 
   if (obj instanceof Date) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return new Date(obj.getTime()) as any;
   }
 
   if (Array.isArray(obj)) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return obj.map((item) => deepCopy(item)) as any;
   }
-
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const copy: any = {};
   for (const key in obj) {
     if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       copy[key] = deepCopy((obj as any)[key]);
     }
   }
@@ -37,14 +40,14 @@ export type DeepMerge<TTarget, TSource> = TTarget extends readonly unknown[]
     : TTarget extends MergeableObject
       ? TSource extends MergeableObject
         ? {
-            [K in keyof TTarget | keyof TSource]: K extends keyof TSource
-              ? K extends keyof TTarget
-                ? DeepMerge<TTarget[K], TSource[K]>
-                : TSource[K]
-              : K extends keyof TTarget
-                ? TTarget[K]
-                : never;
-          }
+          [K in keyof TTarget | keyof TSource]: K extends keyof TSource
+            ? K extends keyof TTarget
+              ? DeepMerge<TTarget[K], TSource[K]>
+              : TSource[K]
+            : K extends keyof TTarget
+              ? TTarget[K]
+              : never;
+        }
         : TSource
       : TSource;
 

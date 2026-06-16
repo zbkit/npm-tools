@@ -31,6 +31,7 @@
     "typecheck": "tsc -p tsconfig.app.json --noEmit",
     "pub": "bumpp --commit --tag && npm_tag=$(node -e \"const v=require('./package.json').version;const m=v.match(/-(alpha|beta|rc)\\./);console.log(m?m[1]:'latest')\") && pnpm publish --access public --tag $npm_tag",
     "prepublishOnly": "pnpm run build",
+    "lint": "eslint .",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
@@ -38,11 +39,16 @@
     "docker:push": "VERSION=$(node -p \"require('./package.json').version\") && docker push registry.cn-hangzhou.aliyuncs.com/zbjumper/npm-tools:$VERSION"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@stylistic/eslint-plugin": "6.0.0-beta.5",
     "@types/node": "^25.9.2",
-    "@typescript/native-preview": "7.0.0-dev.20260611.2",
+    "@typescript/native-preview": "7.0.0-dev.20260616.1",
     "bumpp": "^11.1.0",
+    "eslint": "^10.5.0",
+    "globals": "^17.6.0",
     "tsdown": "^0.22.2",
     "typescript": "^6.0.3",
+    "typescript-eslint": "^8.61.0",
     "vitepress": "2.0.0-alpha.17",
     "vitest": "^4.1.8"
   },

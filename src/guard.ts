@@ -60,6 +60,7 @@ export function guardNullish(
  * @returns 如果 value 是 constructor 的实例，则返回 value。
  * @throws 如果 value 不是 constructor 的实例，则抛出异常，异常信息包含构造函数名称。
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function guardInstanceof<T extends ClassConstructor<any>>(
   value: unknown,
   constructor: T
