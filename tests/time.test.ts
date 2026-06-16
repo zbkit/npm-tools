@@ -61,4 +61,32 @@ describe('formatTime', () => {
 
     expect(formatTime(timestampInMs)).toBe('2024/11/09 08:07:06');
   });
+
+  test('should format with custom pattern', () => {
+    const date = new Date(2026, 5, 15, 9, 8, 7, 123);
+    const timestampInMs = date.getTime();
+
+    expect(formatTime(timestampInMs, 'yyyy-MM-dd HH:mm:ss')).toBe('2026-06-15 09:08:07');
+  });
+
+  test('should format with milliseconds', () => {
+    const date = new Date(2026, 0, 1, 0, 0, 0, 42);
+    const timestampInMs = date.getTime();
+
+    expect(formatTime(timestampInMs, 'yyyy-MM-dd HH:mm:ss.SSS')).toBe('2026-01-01 00:00:00.042');
+  });
+
+  test('should format date only', () => {
+    const date = new Date(2026, 11, 25);
+    const timestampInMs = date.getTime();
+
+    expect(formatTime(timestampInMs, 'yyyy年MM月dd日')).toBe('2026年12月25日');
+  });
+
+  test('should format time only', () => {
+    const date = new Date(2026, 0, 1, 14, 30, 59);
+    const timestampInMs = date.getTime();
+
+    expect(formatTime(timestampInMs, 'HH:mm:ss')).toBe('14:30:59');
+  });
 });

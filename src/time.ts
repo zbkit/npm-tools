@@ -28,12 +28,15 @@ export const getTimeAgo = (pastTime: number | string): string => {
   return `${seconds}秒`;
 };
 
+export type DatePattern = 'yyyy' | 'MM' | 'dd' | 'HH' | 'mm' | 'ss' | 'SSS';
+
 /**
- * 格式化时间戳为 "YYYY/MM/DD HH:mm:ss" 格式的字符串
+ * 格式化时间戳为指定格式的字符串
  * @param timestamp 毫秒时间戳
+ * @param pattern 格式化模板，支持 yyyy/MM/dd/HH/mm/ss/SSS，默认为 'yyyy/MM/dd HH:mm:ss'
  * @returns 格式化后的时间字符串
  */
-export const formatTime = (timestamp: number | string): string => {
+export const formatTime = (timestamp: number | string, pattern: string = 'yyyy/MM/dd HH:mm:ss'): string => {
   const date = new Date(Number(timestamp));
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -41,5 +44,14 @@ export const formatTime = (timestamp: number | string): string => {
   const hours = String(date.getHours()).padStart(2, '0');
   const minutes = String(date.getMinutes()).padStart(2, '0');
   const seconds = String(date.getSeconds()).padStart(2, '0');
-  return `${year}/${month}/${day} ${hours}:${minutes}:${seconds}`;
+  const ms = String(date.getMilliseconds()).padStart(3, '0');
+
+  return pattern
+    .replace('yyyy', String(year))
+    .replace('MM', month)
+    .replace('dd', day)
+    .replace('HH', hours)
+    .replace('mm', minutes)
+    .replace('ss', seconds)
+    .replace('SSS', ms);
 };
