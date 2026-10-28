@@ -5,13 +5,13 @@
   "description": "A starter for creating a TypeScript package.",
   "author": "Bill Zhang <zbjumper@gmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/zbjumper/npm-tools#readme",
+  "homepage": "https://github.com/zbkit/npm-tools#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zbjumper/npm-tools.git"
+    "url": "git+https://github.com/zbkit/npm-tools.git"
   },
   "bugs": {
-    "url": "https://github.com/zbjumper/npm-tools/issues"
+    "url": "https://github.com/zbkit/npm-tools/issues"
   },
   "publishConfig": {
     "access": "public"
